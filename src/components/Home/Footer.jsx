@@ -67,7 +67,7 @@ const imageStyle = {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
             <Link href="/" className="text-2xl font-bold">
-              SakriyaBoss
+              Circle
             </Link>
             <p className="text-black text-base">
               Empowering Indian teams to achieve more through smart productivity solutions.
@@ -136,7 +136,7 @@ const imageStyle = {
         </div>
         <div className="mt-12 border-t border-gray-700 pt-8 ">
           <p className="text-base text-black xl:text-center">
-            &copy; 2024 SakriyaBoss, Inc. All rights reserved.
+            &copy; 2024 Circle, Inc. All rights reserved.
           </p>
     
         </div>

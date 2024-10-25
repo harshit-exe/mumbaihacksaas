@@ -14,6 +14,7 @@ import TaskDashboard from '@/components/DashBoardHR/TaskDashboard'
 import SkillBasedAssignment from '@/components/DashBoardHR/SkillBasedAssignment'
 import RealTimeTracking from '@/components/DashBoardHR/RealTimeTracking'
 import EmployeeDatabase from '@/components/DashBoardHR/EmployeeDatabase'
+import VideoCall from '@/components/DashBoardEMP/VideoCall'
 
 
 const searchData = [
@@ -23,6 +24,7 @@ const searchData = [
   { title: 'Real-time Tracking', component: 'RealTimeTracking' },
   { title: 'Employee Database', component: 'EmployeeDatabase' },
   { title: 'Performance Analytics', component: 'PerformanceAnalytics' },
+  { title: 'Video Call', component: 'VideoCall' },
 ]
 
 export default function ManagerDashboardLayout() {
@@ -80,6 +82,8 @@ export default function ManagerDashboardLayout() {
         return <EmployeeDatabase />
       case 'PerformanceAnalytics':
         return <PerformanceAnalytics />
+      case 'VideoCall':
+        return <VideoCall />
       default:
         return <EmployeeOverview />
     }

@@ -39,7 +39,7 @@ export default function Navbar() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              SakriyaBoss
+              Circle
             </motion.span>
           </Link>
           <div className="hidden md:flex md:items-center md:space-x-8">

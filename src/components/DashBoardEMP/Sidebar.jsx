@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Home, CheckSquare, ListTodo, MessageSquare,Video, Focus, Sunrise, MessageCircle, User, Settings, LogOut, X } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 const menuItems = [
   { name: 'Home', icon: Home },
@@ -42,6 +43,10 @@ const menuItemVariants = {
 
 export default function Sidebar({ onSelectComponent, closeSidebar }) {
   const [status, setStatus] = useState(true)
+  const router = useRouter();
+    const handleLogout =()=>{
+      router.push("/")
+    }
 
   return (
     <motion.div 
@@ -121,7 +126,7 @@ export default function Sidebar({ onSelectComponent, closeSidebar }) {
           </Button>
         </motion.div>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Button variant="ghost" className="w-full justify-start text-destructive hover:text-destructive hover:bg-destructive/10">
+          <Button onClick={()=>handleLogout()} variant="ghost" className="w-full justify-start text-destructive hover:text-destructive hover:bg-destructive/10">
             <LogOut className="mr-2 h-4 w-4" />
             Logout
           </Button>

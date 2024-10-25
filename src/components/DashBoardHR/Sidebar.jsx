@@ -5,7 +5,8 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Users, LayoutDashboard, Briefcase, Activity, Database, BarChart, User, Settings, LogOut, X } from 'lucide-react'
+import { Users, LayoutDashboard, Briefcase, Activity, Database, BarChart, User, Settings, LogOut, X, Video } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 const menuItems = [
   { name: 'Employee Overview', icon: Users, component: 'EmployeeOverview' },
@@ -14,6 +15,7 @@ const menuItems = [
   { name: 'Real-time Tracking', icon: Activity, component: 'RealTimeTracking' },
   { name: 'Employee Database', icon: Database, component: 'EmployeeDatabase' },
   { name: 'Performance Analytics', icon: BarChart, component: 'PerformanceAnalytics' },
+  { name: 'Video Call', icon: Video, component: 'VideoCall' },
 ]
 
 const sidebarVariants = {
@@ -40,6 +42,10 @@ const menuItemVariants = {
 
 export default function Sidebar({ onSelectComponent, closeSidebar }) {
   const [status, setStatus] = useState(true)
+  const router = useRouter();
+  const handleLogout =()=>{
+    router.push("/")
+  }
 
   return (
     <motion.div 
@@ -118,7 +124,7 @@ export default function Sidebar({ onSelectComponent, closeSidebar }) {
           </Button>
         </motion.div>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Button variant="ghost" className="w-full justify-start text-destructive hover:text-destructive hover:bg-destructive/10">
+          <Button variant="ghost" onClick={()=>{handleLogout()}} className="w-full justify-start text-destructive hover:text-destructive hover:bg-destructive/10">
             <LogOut className="mr-2 h-4 w-4" />
             Logout
           </Button>
