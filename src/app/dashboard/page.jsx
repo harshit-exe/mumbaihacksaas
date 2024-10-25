@@ -15,6 +15,7 @@ import FocusMode from '@/components/DashBoardEMP/FocusMode'
 import Chatbot from '@/components/DashBoardEMP/Chatbot'
 import TodoList from '@/components/DashBoardEMP/TodoList'
 import Tasks from '@/components/DashBoardEMP/Tasks'
+import VideoCall from '@/components/DashBoardEMP/VideoCall'
 
 const searchData = [
     { title: 'Dashboard', component: 'Home' },
@@ -24,6 +25,7 @@ const searchData = [
     { title: 'Concentration Mode', component: 'Focus Mode' },
     { title: 'Relaxation', component: 'Meditation' },
     { title: 'Team Chat', component: 'Messaging' },
+    { title: 'Video Call', component: 'Videocall' },
   ]
   
   export default function DashboardLayout() {
@@ -83,6 +85,8 @@ const searchData = [
           return <Meditation />
         case 'Messaging':
           return <Messaging />
+        case 'Videocall':
+          return <VideoCall />
         default:
           return <Home />
       }

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Home, CheckSquare, ListTodo, MessageSquare, Focus, Sunrise, MessageCircle, User, Settings, LogOut, X } from 'lucide-react'
+import { Home, CheckSquare, ListTodo, MessageSquare,Video, Focus, Sunrise, MessageCircle, User, Settings, LogOut, X } from 'lucide-react'
 
 const menuItems = [
   { name: 'Home', icon: Home },
@@ -15,6 +15,7 @@ const menuItems = [
   { name: 'Focus Mode', icon: Focus },
   { name: 'Meditation', icon: Sunrise },
   { name: 'Messaging', icon: MessageCircle },
+  { name: 'Videocall', icon: Video },
 ]
 
 const sidebarVariants = {
