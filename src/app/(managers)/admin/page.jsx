@@ -1,9 +1,16 @@
 import React from 'react'
 
-const page = () => {
+const AdminDashborad = () => {
   return (
-    <div>page</div>
+    <main>
+        <div>
+            side bar
+        </div>
+        <div>
+
+        </div>
+    </main>
   )
 }
 
-export default page
+export default AdminDashborad

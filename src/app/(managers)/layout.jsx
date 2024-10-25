@@ -1,8 +1,11 @@
 import React from 'react'
 
-function page() {
+function page({children }) {
   return (
-    <div>page</div>
+    <div>
+      <AdminNavbar />
+      {children}
+    </div>
   )
 }
 
