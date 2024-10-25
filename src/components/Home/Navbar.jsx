@@ -47,6 +47,7 @@ export default function Navbar() {
             <NavLink href="/solutions">Solutions</NavLink>
             <NavLink href="/about">About</NavLink>
             <NavLink href="/dashboard">Dashboard</NavLink>
+            <NavLink href="/admin">Admin</NavLink>
           </div>
           <div className="hidden md:flex md:items-center md:space-x-4">
             <Button variant="ghost" asChild>
@@ -92,6 +93,7 @@ export default function Navbar() {
                   <MobileNavLink href="/solutions" onClick={() => setIsOpen(false)}>Solutions</MobileNavLink>
                   <MobileNavLink href="/about" onClick={() => setIsOpen(false)}>About</MobileNavLink>
                   <MobileNavLink href="/dashboard" onClick={() => setIsOpen(false)}>Dashboard</MobileNavLink>
+                  <MobileNavLink href="/admin" onClick={() => setIsOpen(false)}>Admin</MobileNavLink>
                   <MobileNavLink href="/login" onClick={() => setIsOpen(false)}>Login</MobileNavLink>
                   <MobileNavLink href="/signup" onClick={() => setIsOpen(false)}>Sign Up</MobileNavLink>
                 </nav>
