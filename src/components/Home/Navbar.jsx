@@ -51,10 +51,10 @@ export default function Navbar() {
           </div>
           <div className="hidden md:flex md:items-center md:space-x-4">
             <Button variant="ghost" asChild>
-              <Link href="/login">Login</Link>
+              <Link href="/auth/login">Login</Link>
             </Button>
             <Button asChild className="bg-gradient-to-r from-blue-600 to-teal-400 text-white hover:opacity-90 transition-opacity">
-              <Link href="/signup">Sign Up</Link>
+              <Link href="/auth/signup">Sign Up</Link>
             </Button>
           </div>
           <div className="flex items-center md:hidden">
@@ -89,13 +89,14 @@ export default function Navbar() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <nav className="flex flex-col gap-4">
-                  <MobileNavLink href="/features" onClick={() => setIsOpen(false)}>Features</MobileNavLink>
+                  <MobileNavLink href="/
+                  features" onClick={() => setIsOpen(false)}>Features</MobileNavLink>
                   <MobileNavLink href="/solutions" onClick={() => setIsOpen(false)}>Solutions</MobileNavLink>
                   <MobileNavLink href="/about" onClick={() => setIsOpen(false)}>About</MobileNavLink>
                   <MobileNavLink href="/dashboard" onClick={() => setIsOpen(false)}>Dashboard</MobileNavLink>
                   <MobileNavLink href="/admin" onClick={() => setIsOpen(false)}>Admin</MobileNavLink>
-                  <MobileNavLink href="/login" onClick={() => setIsOpen(false)}>Login</MobileNavLink>
-                  <MobileNavLink href="/signup" onClick={() => setIsOpen(false)}>Sign Up</MobileNavLink>
+                  <MobileNavLink href="/auth/login" onClick={() => setIsOpen(false)}>Login</MobileNavLink>
+                  <MobileNavLink href="/auth/signup" onClick={() => setIsOpen(false)}>Sign Up</MobileNavLink>
                 </nav>
               </SheetContent>
             </Sheet>
