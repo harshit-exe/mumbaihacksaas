@@ -61,7 +61,7 @@ const fetchEmployees = () => {
       resolve([
         {
           id: 1,
-          name: "Alice Johnson",
+          name: "Sharma Rohit",
           avatar: "/placeholder.svg?height=40&width=40",
           currentTask: "Developing new feature",
           tasksCompleted: 5,
@@ -90,7 +90,7 @@ const fetchEmployees = () => {
         },
         {
           id: 2,
-          name: "Bob Smith",
+          name: "Shrikant Jadhav",
           avatar: "/placeholder.svg?height=40&width=40",
           currentTask: "Code review",
           tasksCompleted: 3,
@@ -119,7 +119,7 @@ const fetchEmployees = () => {
         },
         {
           id: 3,
-          name: "Charlie Davis",
+          name: "Harsiht Nikam",
           avatar: "/placeholder.svg?height=40&width=40",
           currentTask: "Testing new features",
           tasksCompleted: 4,
@@ -148,7 +148,7 @@ const fetchEmployees = () => {
         },
         {
           id: 4,
-          name: "Diana Evans",
+          name: "Ritesh Mane",
           avatar: "/placeholder.svg?height=40&width=40",
           currentTask: "UI/UX improvements",
           tasksCompleted: 6,

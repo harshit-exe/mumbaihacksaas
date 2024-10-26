@@ -15,8 +15,8 @@ const genAI = new GoogleGenerativeAI(API_KEY)
 
 export default function Chatbot() {
   const [messages, setMessages] = useState([
-    { id: 'initial', role: 'assistant', content: "Hello! I'm your AI assistant powered by Google's Gemini. How can I help you today?" }
-  ])
+    { id: 'initial', role: 'assistant', content: "Hello! I'm your AI assistant powered by Cricle AI Model. How can I help you today?" }
+  ])    
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -127,7 +127,7 @@ export default function Chatbot() {
         <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-t-lg p-4">
           <h2 className="text-2xl font-bold flex items-center gap-2">
             <Bot className="w-6 h-6" />
-            Gemini AI Assistant
+            Cricle AI Assistant
           </h2>
         </div>
         <div className="p-6">
