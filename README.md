@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Circle - AI-Powered Remote Work Productivity Platform
 
-## Getting Started
+**Circle** is a productivity-focused web app designed to enhance remote work for both employees and managers. With AI-driven tools and a focus on well-being, Circle provides an all-in-one solution to improve task management, communication, and work-life balance.
 
-First, run the development server:
+## Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Employee Features
+- **Daily Task Overview**: View all assigned tasks with clear deadlines and priorities.
+- **To-Do List & Progress Tracker**: Customize your task list with real-time progress tracking.
+- **Personal AI Chatbot**: An interactive assistant for task prioritization, reminders, and work-related queries.
+- **Focus Mode**: Block distractions with a dedicated "Do Not Disturb" mode and ambient sounds.
+- **Meditation & Breaks**: Guided meditation and scheduled breaks to encourage well-being.
+- **AI Task Optimization**: Receive personalized suggestions for better work patterns based on task load and past performance.
+- **Integrated Communication Tools**: Chat and video calls with team members for seamless collaboration.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Manager (Boss) Features
+- **Real-Time Employee Tracking**: Monitor employee activity, status, and progress.
+- **Employee Database**: A centralized dashboard storing employee details, skills, and work history.
+- **Task Creation Dashboard**: Easily create, assign, and monitor tasks, with skill-based suggestions.
+- **Skill-Based Task Assignment**: AI-powered task assignment based on employee skills and availability.
+- **Performance Analytics**: Gain insights into productivity trends and task completion rates.
+  
+### AI-Driven Highlights
+- **Workload Prediction**: AI predicts potential overwork and suggests task adjustments.
+- **Productivity Insights**: Personalized feedback to optimize work habits for both employees and managers.
+- **Automated Task Prioritization**: AI arranges tasks based on deadlines and complexity.
+- **Mood Detection for Well-Being**: Sentiment analysis recommends breaks if stress levels are detected.
+- **Team Collaboration Insights**: AI tracks and suggests ways to improve teamwork.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Unique Selling Proposition (USP)
+1. **AI-Driven Personalization**: Tailored task management suggestions based on work habits and performance.
+2. **Comprehensive Well-Being Focus**: Integrated meditation, focus modes, and mood detection for balanced productivity.
+3. **Seamless Communication**: Built-in messaging and video calls for instant collaboration.
+4. **Skill-Based Task Assignment**: AI matches tasks with employees’ skills, maximizing efficiency.
+5. **Real-Time Insights**: Detailed analytics and tracking for data-driven decisions.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Design Approach
+- **Minimalist & Clutter-Free**: Clean, user-friendly interface to enhance productivity.
+- **Calming Color Scheme**: Neutral colors reduce eye strain during extended work hours.
+- **Responsive Layout**: Optimized for desktops, tablets, and mobile devices.
 
-## Learn More
+## Challenges
+- **Custom AI Chatbot**: Training an AI assistant to handle task-related queries and provide real-time suggestions.
+- **Task Breakdown Feature**: Using AI to segment tasks into manageable sub-tasks for improved to-do list organization.
 
-To learn more about Next.js, take a look at the following resources:
+## Conclusion
+Circle leverages AI to transform remote work by enhancing task management, well-being, and communication. With its intuitive design and tailored insights, Circle is ideal for modern teams seeking a productive and balanced remote work experience.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Developed By**: Cipher Squad
+**Website**: https://mumbaihacksaas.vercel.app/
+**License**: Cipher Squad 
