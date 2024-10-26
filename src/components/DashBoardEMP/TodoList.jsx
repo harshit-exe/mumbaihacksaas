@@ -77,7 +77,7 @@ const TaskItem = ({ task, onToggleSubtask, onDeleteTask, onUpdateTaskStatus }) =
         <CardHeader className="pb-2">
           <div className="flex justify-between items-center">
             <CardTitle className="text-lg font-semibold text-gray-800 dark:text-gray-200">{task.name}</CardTitle>
-            <Badge className={`${priorityColors[task.priority]} capitalize px-2 py-1 text-xs font-semibold rounded-full border`}>
+            <Badge className={`${priorityColors[task.priority]} capitalize px-2 py-1 text-xs font-semibold rounded-sm border`}>
               {task.priority}
             </Badge>
           </div>
@@ -87,9 +87,9 @@ const TaskItem = ({ task, onToggleSubtask, onDeleteTask, onUpdateTaskStatus }) =
             <span className="text-sm font-medium text-gray-600 dark:text-gray-300">Progress</span>
             <span className="text-sm font-medium text-gray-600 dark:text-gray-300">{Math.round(progress)}%</span>
           </div>
-          <Progress value={progress} className="w-full h-2 bg-gray-200 dark:bg-gray-700" indicatorClassName="bg-blue-500" />
+          <Progress value={progress} className="w-full h-2 bg-gray-200 dark:bg-gray-700" indicatorclassname="bg-blue-500" />
           <div className="mt-4 flex items-center justify-between">
-            <Badge className={`${statusColors[task.status]} capitalize px-2 py-1 text-xs font-semibold rounded-full border`}>
+            <Badge className={`${statusColors[task.status]} capitalize px-2 py-1 text-xs font-semibold rounded-sm border`}>
               {task.status}
             </Badge>
             <div className="flex space-x-2">

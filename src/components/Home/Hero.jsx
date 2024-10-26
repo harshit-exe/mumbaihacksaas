@@ -17,6 +17,7 @@ export default function Hero() {
 
   return (
     <motion.div
+    id="about"
       ref={targetRef}
       style={{ opacity }}
       className="relative overflow-hidden pt-16 pb-32 min-h-screen flex items-center"
