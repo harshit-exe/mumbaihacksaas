@@ -13,29 +13,16 @@ export default function LoginForm() {
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      // Example API call (replace with your actual API endpoint)
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      })
+      const response = await fetch(`${process.env.API_DOMAIN}/api/auth/register`,{method:"POST"})
 
-      if (response.ok) {
-        console.log('Login successful')
-        toast("Login Successful", {
-          description: "Welcome back!",
-        })
-      } else {
-        console.error('Login failed')
-        toast.error("Login Failed", {
-          description: "Please check your credentials and try again.",
-        })
-      }
+      console.log(response);
+      
+      
     } catch (error) {
       console.error('Error during login:', error)
       toast.error("Login Error", {
@@ -101,7 +88,7 @@ export default function LoginForm() {
         <CardFooter className="flex justify-center">
           <p className="text-sm text-gray-600">
             Dont have an account?{" "}
-            <Link href="/auth/signup" className="font-medium text-primary hover:underline">
+            <Link href="/signup" className="font-medium text-primary hover:underline">
               Sign up now
             </Link>
           </p>

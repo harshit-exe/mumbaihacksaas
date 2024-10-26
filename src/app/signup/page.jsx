@@ -21,7 +21,7 @@ export default function SignUpForm() {
     e.preventDefault()
     try {
       // Example API call (replace with your actual API endpoint)
-      const response = await fetch('/api/signup', {
+      const response = await fetch(`${process.env.API_DOMAIN}/api/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -139,7 +139,7 @@ export default function SignUpForm() {
         <CardFooter className="flex justify-center">
           <p className="text-sm text-gray-600">
             Already have an account?{" "}
-            <Link href="/auth/login" className="font-medium text-primary hover:underline">
+            <Link href="/login" className="font-medium text-primary hover:underline">
               Login now
             </Link>
           </p>
