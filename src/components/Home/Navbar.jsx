@@ -43,9 +43,9 @@ export default function Navbar() {
             </motion.span>
           </Link>
           <div className="hidden md:flex md:items-center md:space-x-8">
-            <NavLink href="/features">Features</NavLink>
-            <NavLink href="/solutions">Solutions</NavLink>
-            <NavLink href="/about">About</NavLink>
+            <NavLink href="#features">Features</NavLink>
+            <NavLink href="#solutions">Solutions</NavLink>
+            <NavLink href="#about">About</NavLink>
             <NavLink href="/dashboard">Dashboard</NavLink>
             <NavLink href="/admin">Admin</NavLink>
           </div>

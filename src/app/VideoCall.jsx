@@ -45,7 +45,7 @@ export default function VideoCall() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-lg shadow-lg p-6 max-w-4xl mx-auto"
+      className="bg-white rounded-lg border border-zinc-900 p-6 max-w-4xl mx-auto"
     >
       <h2 className="text-3xl font-semibold mb-6 text-blue-600">Video Call Meetings</h2>
 
