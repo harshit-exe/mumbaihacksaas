@@ -2,17 +2,11 @@
 
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
 import { Send, Bot, User, AlertCircle, Copy, Check } from 'lucide-react'
-import { ScrollArea } from '@/components/ui/scroll-area'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { GoogleGenerativeAI } from "@google/generative-ai"
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { GoogleGenerativeAI } from "@google/generative-ai"
 
 // NOTE: In a production environment, always use environment variables for API keys
 const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || 'AIzaSyBCuvpypc1y7oCKQZPfctEGtHx5r8edCfo'
@@ -63,26 +57,7 @@ export default function Chatbot() {
     setError(null)
 
     try {
-      const result = await chatSession.sendMessage(
-        `${input}\n\nPlease format your response appropriately:
-        - For letters, use the following format:
-          [LETTER]
-          [Date]
-          
-          [Recipient's Name]
-          [Recipient's Address]
-          [City, State ZIP Code]
-          
-          Dear [Recipient's Name],
-          
-          [Body of the letter]
-          
-          Sincerely,
-          [Your Name]
-          [/LETTER]
-        - For code, use markdown code blocks with the appropriate language specified.
-        - For general responses, use markdown formatting for better readability.`
-      )
+      const result = await chatSession.sendMessage(input)
       const responseText = result.response.text()
       setMessages(prev => [...prev, { id: (Date.now() + 1).toString(), role: 'assistant', content: responseText }])
     } catch (error) {
@@ -106,89 +81,63 @@ export default function Chatbot() {
       return <p>{message.content}</p>
     }
 
-    const letterRegex = /\[LETTER\]([\s\S]*?)\[\/LETTER\]/g
-    const parts = message.content.split(letterRegex)
-
     return (
-      <>
-        {parts.map((part, index) => {
-          if (index % 2 === 1) {
-            // This is a letter part
-            return (
-              <div key={index} className="bg-yellow-50 p-4 rounded-md font-serif">
-                <ReactMarkdown>{part.trim()}</ReactMarkdown>
+      <ReactMarkdown
+        components={{
+          code({ node, inline, className, children, ...props }) {
+            const match = /language-(\w+)/.exec(className || '')
+            const code = String(children).replace(/\n$/, '')
+            return !inline && match ? (
+              <div className="relative">
+                <SyntaxHighlighter
+                  style={atomDark}
+                  language={match[1]}
+                  PreTag="div"
+                  {...props}
+                >
+                  {code}
+                </SyntaxHighlighter>
+                <button
+                  onClick={() => copyToClipboard(code)}
+                  className="absolute top-2 right-2 p-2 bg-gray-800 rounded-md hover:bg-gray-700 transition-colors"
+                >
+                  {copiedCode === code ? (
+                    <Check className="w-4 h-4 text-green-500" />
+                  ) : (
+                    <Copy className="w-4 h-4 text-gray-300" />
+                  )}
+                </button>
               </div>
-            )
-          } else {
-            // This is a non-letter part
-            return (
-              <ReactMarkdown
-                key={index}
-                components={{
-                  code({ node, inline, className, children, ...props }) {
-                    const match = /language-(\w+)/.exec(className || '')
-                    const code = String(children).replace(/\n$/, '')
-                    return !inline && match ? (
-                      <div className="relative">
-                        <SyntaxHighlighter
-                          style={atomDark}
-                          language={match[1]}
-                          PreTag="div"
-                          {...props}
-                        >
-                          {code}
-                        </SyntaxHighlighter>
-                        <button
-                          onClick={() => copyToClipboard(code)}
-                          className="absolute top-2 right-2 p-2 bg-gray-800 rounded-md hover:bg-gray-700 transition-colors"
-                        >
-                          {copiedCode === code ? (
-                            <Check className="w-4 h-4 text-green-500" />
-                          ) : (
-                            <Copy className="w-4 h-4 text-gray-300" />
-                          )}
-                        </button>
-                      </div>
-                    ) : (
-                      <code className={className} {...props}>
-                        {children}
-                      </code>
-                    )
-                  }
-                }}
-              >
-                {part}
-              </ReactMarkdown>
+            ) : (
+              <code className={className} {...props}>
+                {children}
+              </code>
             )
           }
-        })}
-      </>
+        }}
+      >
+        {message.content}
+      </ReactMarkdown>
     )
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="max-w-2xl mx-auto p-4"
-    >
-      <Card className="w-full">
-        <CardHeader className="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-t-lg">
-          <CardTitle className="text-2xl font-bold flex items-center gap-2">
+    <div className="max-w-2xl mx-auto p-4">
+      <div className="w-full bg-white shadow-md rounded-lg">
+        <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-t-lg p-4">
+          <h2 className="text-2xl font-bold flex items-center gap-2">
             <Bot className="w-6 h-6" />
-            Gemini AI Assistant (Improved Formatting)
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6">
+            Gemini AI Assistant
+          </h2>
+        </div>
+        <div className="p-6">
           {error && (
-            <Alert variant="destructive" className="mb-4">
-              <AlertCircle className="h-4 w-4" />
-              <AlertTitle>Error</AlertTitle>
-              <AlertDescription>{error}</AlertDescription>
-            </Alert>
+            <div className="mb-4 p-4 bg-red-100 text-red-700 rounded-md">
+              <AlertCircle className="inline-block w-4 h-4 mr-2" />
+              <span className="font-bold">Error:</span> {error}
+            </div>
           )}
-          <ScrollArea className="h-[400px] pr-4">
+          <div className="h-[400px] overflow-y-auto mb-4">
             {messages.map((message) => (
               <motion.div
                 key={message.id}
@@ -200,10 +149,9 @@ export default function Chatbot() {
                 }`}
               >
                 {message.role === 'assistant' && (
-                  <Avatar>
-                    <AvatarFallback>AI</AvatarFallback>
-                    <AvatarImage src="/ai-avatar.png" alt="AI Avatar" />
-                  </Avatar>
+                  <div className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white">
+                    AI
+                  </div>
                 )}
                 <div
                   className={`p-3 rounded-lg max-w-[80%] ${
@@ -215,24 +163,26 @@ export default function Chatbot() {
                   {renderMessage(message)}
                 </div>
                 {message.role === 'user' && (
-                  <Avatar>
-                    <AvatarFallback>
-                      <User className="w-4 h-4" />
-                    </AvatarFallback>
-                    <AvatarImage src="/user-avatar.png" alt="User Avatar" />
-                  </Avatar>
+                  <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                    <User className="w-4 h-4" />
+                  </div>
                 )}
               </motion.div>
             ))}
-          </ScrollArea>
-          <form onSubmit={handleSubmit} className="flex items-center gap-2 mt-4">
-            <Input
+          </div>
+          <form onSubmit={handleSubmit} className="flex items-center gap-2">
+            <input
+              type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type your message..."
-              className="flex-grow"
+              className="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
-            <Button type="submit" disabled={isLoading || !chatSession} className="bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+            <button
+              type="submit"
+              disabled={isLoading || !chatSession}
+              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-2 rounded-md disabled:opacity-50"
+            >
               {isLoading ? (
                 <motion.div
                   animate={{ rotate: 360 }}
@@ -243,10 +193,10 @@ export default function Chatbot() {
               ) : (
                 <Send className="w-4 h-4" />
               )}
-            </Button>
+            </button>
           </form>
-        </CardContent>
-      </Card>
-    </motion.div>
+        </div>
+      </div>
+    </div>
   )
 }
